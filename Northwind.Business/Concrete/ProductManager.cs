@@ -11,7 +11,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace Northwind.Business.Concrete
 {
-    public class ProductManager:IProductService
+    public class ProductManager : IProductService
     {
         private IProductDal _productDal;
         public ProductManager(IProductDal productDal)
@@ -26,21 +26,17 @@ namespace Northwind.Business.Concrete
 
         public void Delete(Product product)
         {
-            try
-            {
-                _productDal.Delete(product);
 
-            }
-            catch (DbUpdateException e)
-            {
 
-                throw;
-            }
+            _productDal.Delete(product);
+
+
+
         }
 
         public List<Product> GetAll()
         {
-            return _productDal.GetAll(); 
+            return _productDal.GetAll();
         }
 
         public List<Product> GetProductByProductName(string productName)
@@ -50,13 +46,13 @@ namespace Northwind.Business.Concrete
 
         public List<Product> GetProductsByCategory(int categoryId)
         {
-            return _productDal.GetAll(p=>categoryId == p.CategoryID);
+            return _productDal.GetAll(p => categoryId == p.CategoryID);
         }
 
         public void Update(Product product)
         {
-             _productDal.Update(product);
-            
+            _productDal.Update(product);
+
         }
     }
 }
